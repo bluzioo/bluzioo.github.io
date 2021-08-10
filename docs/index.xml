@@ -1,18 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>BLUZ SPACE</title>
-    <link>http://bluzioo.github.io/</link>
-    <description>Recent content on BLUZ SPACE</description>
+    <title>Pure theme for Hugo</title>
+    <link>https://bluzioo.github.io/</link>
+    <description>Recent content on Pure theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 10 Aug 2021 10:59:23 +0800</lastBuildDate><atom:link href="http://bluzioo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Tue, 10 Aug 2021 15:38:37 +0800</lastBuildDate>
+    
+        <atom:link href="https://bluzioo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>裸金属负载均衡器</title>
+      <link>https://bluzioo.github.io/2021/08/bare-metal-lb/</link>
+      <pubDate>Tue, 10 Aug 2021 15:38:37 +0800</pubDate>
+      
+      <guid>https://bluzioo.github.io/2021/08/bare-metal-lb/</guid>
+      <description>MetalLB</description>
+    </item>
+    
     <item>
       <title>First Post</title>
-      <link>http://bluzioo.github.io/posts/first-post/</link>
+      <link>https://bluzioo.github.io/2021/08/first-post/</link>
       <pubDate>Tue, 10 Aug 2021 10:59:23 +0800</pubDate>
       
-      <guid>http://bluzioo.github.io/posts/first-post/</guid>
+      <guid>https://bluzioo.github.io/2021/08/first-post/</guid>
       <description>Hello world </description>
     </item>
     

@@ -3,3 +3,4 @@ languageCode = 'en-us'
 title = 'BLUZ SPACE'
 theme = "ananke"
 publishDir = "docs"
+

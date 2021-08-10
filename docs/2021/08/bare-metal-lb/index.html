@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <title>
-        Pure theme for Hugo</title>
+        裸金属负载均衡器 - Pure theme for Hugo
+      </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -19,25 +20,29 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    
+    <meta name="description" content="MetalLB" />
     <meta name="generator" content="Hugo 0.87.0 with theme pure" />
-    <title>Pure theme for Hugo</title>
+    <title>裸金属负载均衡器 - Pure theme for Hugo</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://bluzioo.github.io/tags/index.xml" title="Pure theme for Hugo" />
     
     <link rel="stylesheet" href="https://bluzioo.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="Tags" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bluzioo.github.io/tags/" />
+    <meta property="og:title" content="裸金属负载均衡器" />
+<meta property="og:description" content="MetalLB" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bluzioo.github.io/2021/08/bare-metal-lb/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-10T15:38:37+08:00" />
+<meta property="article:modified_time" content="2021-08-10T15:38:37+08:00" />
 
-<meta itemprop="name" content="Tags">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="name" content="裸金属负载均衡器">
+<meta itemprop="description" content="MetalLB"><meta itemprop="datePublished" content="2021-08-10T15:38:37+08:00" />
+<meta itemprop="dateModified" content="2021-08-10T15:38:37+08:00" />
+<meta itemprop="wordCount" content="1">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="裸金属负载均衡器"/>
+<meta name="twitter:description" content="MetalLB"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -222,21 +227,104 @@ function tagCloud(where, min, max) {
 
     
     
-<main class="main" role="main">
-    <article class="article article-tags post-type-list" itemscope="">
-        <header class="article-header">
-            <h1 itemprop="name" class="hidden-xs">Tags</h1>
-            <p class="text-muted hidden-xs">Total 0 tags</p>
-            <nav role="navigation" id="nav-main" class="okayNav">
-                <ul>
-                    <li><a href="https://bluzioo.github.io/tags">All</a></li>
-                </ul>
-            </nav>
-        </header>
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">Catalogue</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/08/bare-metal-lb/"
+    >裸金属负载均衡器</a
+  >
+</h1>
+
+      <div class="article-meta">
         
-        <div class="article-body">
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://bluzioo.github.io/2021/08/bare-metal-lb/" class="article-date">
+  <time datetime="2021-08-10 15:38:37 &#43;0800 CST" itemprop="datePublished">2021-08-10</time>
+</a>
+</span>
+
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1 words</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Time: 1 minutes </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="metallb">MetalLB</h2>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>Permalink: </strong>
+      <a href="https://bluzioo.github.io/2021/08/bare-metal-lb/" title="裸金属负载均衡器" target="_blank" rel="external">https://bluzioo.github.io/2021/08/bare-metal-lb/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/bluzioo" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://bluzioo.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/bluzioo" target="_blank"><span class="text-dark">bluzioo</span><small class="ml-1x">Developer</small></a></h3>
+        <div>Cloud Native | Edge Computing</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://bluzioo.github.io/2021/08/first-post/" title="First Post"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;Older</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="Catalogue" role="button">
+                    <span>[&nbsp;</span><span>Catalogue</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
         </div>
-    </article>
+    </div>
+</nav>
+
+
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://github.com/bluzioo" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -310,6 +398,7 @@ function tagCloud(where, min, max) {
         hasInnerContainers: true,
     });
 </script>
+
 
   </body>
 </html>
