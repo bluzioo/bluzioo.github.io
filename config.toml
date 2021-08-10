@@ -9,6 +9,8 @@ theme = "loveit"
 # 主题目录
 #themesDir = "../.."
 
+publishDir = "docs"
+
 # website title
 # 网站标题
 title = "Bluz Space"

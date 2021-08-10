@@ -1,51 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <url>
-    <loc>https://bluzioo.github.io/posts/</loc>
-    <lastmod>2021-08-10T15:38:37+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <sitemap>
+    <loc>https://bluzioo.github.io/en/sitemap.xml</loc>
+    
+      <lastmod>2021-08-10T15:57:12+08:00</lastmod>
+    
+  </sitemap>
   
-  <url>
-    <loc>https://bluzioo.github.io/</loc>
-    <lastmod>2021-08-10T15:38:37+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <sitemap>
+    <loc>https://bluzioo.github.io/zh-cn/sitemap.xml</loc>
+    
+  </sitemap>
   
-  <url>
-    <loc>https://bluzioo.github.io/2021/08/bare-metal-lb/</loc>
-    <lastmod>2021-08-10T15:38:37+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <sitemap>
+    <loc>https://bluzioo.github.io/fr/sitemap.xml</loc>
+    
+  </sitemap>
   
-  <url>
-    <loc>https://bluzioo.github.io/2021/08/first-post/</loc>
-    <lastmod>2021-08-10T10:59:23+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://bluzioo.github.io/categories/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://bluzioo.github.io/series/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://bluzioo.github.io/tags/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-</urlset>
+</sitemapindex>
