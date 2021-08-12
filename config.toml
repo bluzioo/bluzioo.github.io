@@ -161,7 +161,7 @@ enableEmoji = true
           paginate = 6
       # Social config in home page
       [languages.en.params.social]
-        GitHub = "xxxx"
+        GitHub = "bluzioo"
         Linkedin = ""
         Twitter = "xxxx"
         Instagram = "xxxx"
@@ -222,7 +222,7 @@ enableEmoji = true
         XMPP = ""
         Matrix = ""
         Bilibili = ""
-        Email = "xxxx@xxxx.com"
+        Email = "bluz.mao@outlook.com"
         RSS = true
         [languages.en.params.social.Mastodon]
           id = "@xxxx"
@@ -361,7 +361,7 @@ enableEmoji = true
           paginate = 6
       # 主页的社交信息设置
       [languages.zh-cn.params.social]
-        GitHub = "xxxx"
+        GitHub = "bluzioo"
         Linkedin = ""
         Twitter = ""
         Instagram = ""
@@ -423,7 +423,7 @@ enableEmoji = true
         XMPP = ""
         Matrix = ""
         Bilibili = "xxxx"
-        Email = "xxxx@xxxx.com"
+        Email = "bluz.mao@outlook.com"
         RSS = true
 
   [languages.fr]
@@ -619,7 +619,7 @@ enableEmoji = true
         XMPP = ""
         Matrix = ""
         Bilibili = ""
-        Email = "xxxx@xxxx.com"
+        Email = "bluz.mao@outlook.com"
         RSS = true
 
 [params]
@@ -947,7 +947,7 @@ enableEmoji = true
       # Publisher info
       # 出版者信息
       [params.page.seo.publisher]
-        name = "xxxx"
+        name = "Bluz Mao"
         logoUrl = "/images/avatar.png"
 
   # TypeIt config
@@ -1075,9 +1075,9 @@ enableEmoji = true
 # Author config
 # 作者配置
 [author]
-  name = "xxxx"
-  email = ""
-  link = ""
+  name = "Bluz Mao"
+  email = "bluz.mao@outlook.com"
+  link = "https://github.com/bluzioo"
 
 # Sitemap config
 # 网站地图配置

@@ -6,7 +6,7 @@ keywords: ["loadbalancer", "kubernetes", "k8s", "metallb"]
 description: "MetalLB是一款使用标准路由协议的K8S负载均衡器"
 tags: ["kubernetes"]
 categories: ["kubernetes"]
-author: "bluz.mao"
+author: "Bluz Mao"
 ---
 
 ## 概述
