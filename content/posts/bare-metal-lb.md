@@ -9,32 +9,239 @@ categories: ["kubernetes"]
 author: "Bluz Mao"
 ---
 
-## 概述
+## 背景
 
-Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务。
-在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题。
+Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务
+
+在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题
 
 裸金属环境的负载均衡器开源解决方案：
 
 * MetalLB
 * OpenELB （原PorterLB）
 
-以下对MetalLB进行展开。
+以下对MetalLB进行展开
 
-## 基本概念
+## 概念
 
 MetalLB具备两项功能：address allocation和external announcement
 
 ### Address Allocation
 
-MetalLB支持地址分配，前提是配置好IP池。面向内网的集群，即分配好内网IP段，而面向公网的，也可列举可用的公网IP列表。
-如果不指定service的spec.loadbalancerIP，metalLB则会从IP池随机分配给LoadBalancer型的service。
+MetalLB支持地址分配，前提是配置好IP池。面向内网的集群，即分配好内网IP段，而面向公网的，也可列举可用的公网IP列表
+
+如果不指定service的spec.loadbalancerIP，metalLB则会从IP池随机分配给LoadBalancer型的service
 
 ### External Announcement
 
-分配了的LB IP对外又是怎么被发现及访问到？MetalLB提供了两种模式：Layer 2和BGP。
+分配了的LB IP对外又是怎么被发现及访问到？MetalLB提供了两种模式：Layer 2和BGP
 
-在Layer 2模式下，可指定几台集群内主机作为响应LB IP的地址发现（ARP for IPv4, NDP for IPv6）。
-在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息。
+在Layer 2模式下，可指定几台集群内主机作为响应LB IP的地址发现（ARP for IPv4, NDP for IPv6）
 
-## 部署验证
+在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息
+
+## 部署
+
+### 环境要求
+
+* Kubernetes version > 1.13.0, 集群没有负载均衡器
+* 集群网络兼容MetalLB，兼容清单https://metallb.universe.tf/installation/network-addons/
+* 空闲的IP或IP段可供MetalLB分配
+* BGP模式需要支持BGP协议的上层路由器
+* 7946端口在节点间开放
+
+### 测试环境
+
+|  组件   | 描述  |
+|  ----  | ----  |
+|  系统  | centos7  |
+|  内核  | 5.13.0-1.el7.elrepo.x86_64  |
+| kubernetes  | v1.19.12 |
+| cilium  | v1.9.3 |
+| metallb  | v0.10.2 |
+| master ip  | 192.168.199.77 |
+| LB ip pool  | 192.168.199.223-224 |
+
+### 准备
+
+如果k8s集群里使用的是kube-proxy，k8s版本>v1.14.2，需要开启strict ARP，而使用了kube-router作为service proxy，默认已开启
+
+```bash
+kubectl edit configmap -n kube-system kube-proxy
+
+# 编辑设置
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: "ipvs"
+ipvs:
+  strictARP: true
+```
+
+### 安装
+
+以Manifest安装
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/metallb.yaml
+```
+
+安装后，metallb的资源对象隔离在名为metallb-system的namespace，这时metallb还未能工作，LoadBalancerIP未分配
+
+```bash
+[root@k8s-master01 ~]# k get svc istio-ingressgateway -n istio-system
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                                                     AGE
+istio-ingressgateway   LoadBalancer   10.107.221.79   <pending>   15021:31462/TCP,80:32243/TCP,443:31087/TCP,8081:30765/TCP   36d
+```
+
+> 除了使用manifests安装，社区还提供helm和kustomize方式安装，详见<https://metallb.universe.tf/installation>
+
+#### 配置Layer 2模式配置
+
+开启layer2模式，需配置一份configMap，添加至集群
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.199.223-192.168.199.224
+```
+
+再查看sevice，已分配到了LoadBalancerIP: 192.168.199.223
+
+```bash
+[root@k8s-master01 ~]# k get svc istio-ingressgateway -n istio-system
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP       PORT(S)                                                     AGE
+istio-ingressgateway   LoadBalancer   10.107.221.79   192.168.199.223   15021:31462/TCP,80:32243/TCP,443:31087/TCP,8081:30765/TCP   36d
+```
+
+#### 配置BGP模式
+
+开启BGP模式需要上层路由器支持BGP模式，configMap配置如下
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    peers:
+    - peer-address: 192.168.199.68
+      peer-asn: 64512
+      my-asn: 64513
+    address-pools:
+    - name: default
+      protocol: bgp
+      addresses:
+      - 192.168.199.223-192.168.199.224
+```
+
+* peer-address：BGP路由器IP
+* peer-asn: 对方自治系统编号
+* my-asn: 本集群自治系统编号
+
+> 更多配置参考<https://metallb.universe.tf/configuration>
+
+### 模拟BGP路由器
+
+在没有上层路由器支持BGP协议的情况下，可通过安装模拟路由器来进行测试验证，模拟路由器有BIRD、Guagga，下面以Ggugga为示例安装
+
+```bash
+# 确保yum源
+yum install quagga
+
+# 关闭selinux
+setsebool -P zebra_write_config 1 
+
+# （可选）配置，或直接使用/etc/quagga/zebra.conf，修改其中的hostname为主机名
+cp /usr/share/doc/quagga-0.99.22.4/zebra.conf.sample /etc/quagga/zebra.conf
+
+# 启动zebra
+systemctl start zebra
+
+# 查看zebra状态
+systemctl status zebra
+```
+
+配置BGP
+
+```bash
+cp /usr/share/doc/quagga-0.99.22.4/bgpd.conf.sample /etc/quagga/bgpd.conf
+
+# 修改/etc/quagga/bgpd.conf
+vi /etc/quagga/bgpd.conf
+------
+router bgp 64512
+
+# 启动
+systemctl start bgpd
+
+# 查看bgpd状态
+systemctl status bgpd
+```
+
+```bash
+[root@node68 quagga]# vtysh
+
+Hello, this is Quagga (version 0.99.22.4).
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+node68# conf t 
+node68(config)# router bgp 64512
+node68(config-router)# no auto-summary  
+node68(config-router)# no synchronization  
+node68(config-router)# neighbor 192.168.199.77 remote-as 64513
+node68(config-router)# neighbor 192.168.199.77 description  "k8s master01"
+node68(config-router)# exit
+node68(config)# exit
+node68# write
+
+#查看BGP建立状态
+node68# show ip bgp summary
+BGP router identifier 192.168.199.68, local AS number 64512
+RIB entries 3, using 336 bytes of memory
+Peers 1, using 4560 bytes of memory
+
+Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+192.168.199.77  4 64513       2       3        0    0    0 00:00:17        2
+
+Total number of neighbors 1
+
+
+node68# exit
+# 查看主机路由信息，看到192.168.199.223和192.168.199.224的路由信息已经添加
+[root@node68 ~]# ip route
+default via 192.168.199.1 dev eth0
+169.254.0.0/16 dev eth0  scope link  metric 1002
+192.168.199.0/24 dev eth0  proto kernel  scope link  src 192.168.199.68
+192.168.199.223 via 192.168.199.77 dev eth0  proto zebra
+192.168.199.224 via 192.168.199.77 dev eth0  proto zebra
+
+# 通过LB ip访问集群
+[root@node68 ~]# curl -v 192.168.199.223:80
+{"timestamp":"2021-08-13T06:40:22.413+0000","status":404,"error":"Not Found","message":"No message available","path":"/"}
+
+```
+
+## 原理
+
+### Layer 2模式
+
+### BGP模式
+
+## 小结
+
+## 参考
+
+<https://metallb.universe.tf/>
+<https://blog.csdn.net/kadwf123/article/details/96838805>

@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bluzioo.github.io/bare-metal-lb/" /><meta property="og:image" content="https://bluzioo.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-10T15:38:37+08:00" />
-<meta property="article:modified_time" content="2021-08-12T18:35:57+08:00" />
+<meta property="article:modified_time" content="2021-08-12T18:45:14+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://bluzioo.github.io/logo.png"/>
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bluzioo.github.io\/bare-metal-lb\/"
-        },"image": ["https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kubernetes","wordcount":  35 ,
-        "url": "https:\/\/bluzioo.github.io\/bare-metal-lb\/","datePublished": "2021-08-10T15:38:37+08:00","dateModified": "2021-08-12T18:35:57+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kubernetes","wordcount":  499 ,
+        "url": "https:\/\/bluzioo.github.io\/bare-metal-lb\/","datePublished": "2021-08-10T15:38:37+08:00","dateModified": "2021-08-12T18:45:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Bluz Mao","logo": "https:\/\/bluzioo.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -46,7 +46,7 @@
             <a href="/" title="Bluz Space"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>Bluz Space</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/bluzioo" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
                         <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/bare-metal-lb/" selected>English</option></select>
                     </a><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
@@ -91,7 +91,7 @@
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/bluzioo" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
                     <select class="language-select" onchange="location = this.value;"><option value="/bare-metal-lb/" selected>English</option></select>
@@ -110,8 +110,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes裸金属环境负载均衡器-MetalLB</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Bluz Mao</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>kubernetes</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;35 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;<span id="/bare-metal-lb/" class="leancloud_visitors" data-flag-title="Kubernetes裸金属环境负载均衡器-MetalLB">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;499 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/bare-metal-lb/" class="leancloud_visitors" data-flag-title="Kubernetes裸金属环境负载均衡器-MetalLB">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -121,41 +121,414 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#概述">概述</a></li>
-    <li><a href="#基本概念">基本概念</a>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#概念">概念</a>
       <ul>
         <li><a href="#address-allocation">Address Allocation</a></li>
         <li><a href="#external-announcement">External Announcement</a></li>
       </ul>
     </li>
-    <li><a href="#部署验证">部署验证</a></li>
+    <li><a href="#部署">部署</a>
+      <ul>
+        <li><a href="#环境要求">环境要求</a></li>
+        <li><a href="#测试环境">测试环境</a></li>
+        <li><a href="#准备">准备</a></li>
+        <li><a href="#安装">安装</a>
+          <ul>
+            <li><a href="#配置layer-2模式配置">配置Layer 2模式配置</a></li>
+            <li><a href="#配置bgp模式">配置BGP模式</a></li>
+          </ul>
+        </li>
+        <li><a href="#模拟bgp路由器">模拟BGP路由器</a></li>
+      </ul>
+    </li>
+    <li><a href="#原理">原理</a>
+      <ul>
+        <li><a href="#layer-2模式">Layer 2模式</a></li>
+        <li><a href="#bgp模式">BGP模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#小结">小结</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="概述">概述</h2>
-<p>Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务。
-在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题。</p>
+            </div><div class="content" id="content"><h2 id="背景">背景</h2>
+<p>Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务</p>
+<p>在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题</p>
 <p>裸金属环境的负载均衡器开源解决方案：</p>
 <ul>
 <li>MetalLB</li>
 <li>OpenELB （原PorterLB）</li>
 </ul>
-<p>以下对MetalLB进行展开。</p>
-<h2 id="基本概念">基本概念</h2>
+<p>以下对MetalLB进行展开</p>
+<h2 id="概念">概念</h2>
 <p>MetalLB具备两项功能：address allocation和external announcement</p>
 <h3 id="address-allocation">Address Allocation</h3>
-<p>MetalLB支持地址分配，前提是配置好IP池。面向内网的集群，即分配好内网IP段，而面向公网的，也可列举可用的公网IP列表。
-如果不指定service的spec.loadbalancerIP，metalLB则会从IP池随机分配给LoadBalancer型的service。</p>
+<p>MetalLB支持地址分配，前提是配置好IP池。面向内网的集群，即分配好内网IP段，而面向公网的，也可列举可用的公网IP列表</p>
+<p>如果不指定service的spec.loadbalancerIP，metalLB则会从IP池随机分配给LoadBalancer型的service</p>
 <h3 id="external-announcement">External Announcement</h3>
-<p>分配了的LB IP对外又是怎么被发现及访问到？MetalLB提供了两种模式：Layer 2和BGP。</p>
-<p>在Layer 2模式下，可指定几台集群内主机作为响应LB IP的地址发现（ARP for IPv4, NDP for IPv6）。
-在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息。</p>
-<h2 id="部署验证">部署验证</h2>
+<p>分配了的LB IP对外又是怎么被发现及访问到？MetalLB提供了两种模式：Layer 2和BGP</p>
+<p>在Layer 2模式下，可指定几台集群内主机作为响应LB IP的地址发现（ARP for IPv4, NDP for IPv6）</p>
+<p>在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息</p>
+<h2 id="部署">部署</h2>
+<h3 id="环境要求">环境要求</h3>
+<ul>
+<li>Kubernetes version &gt; 1.13.0, 集群没有负载均衡器</li>
+<li>集群网络兼容MetalLB，兼容清单https://metallb.universe.tf/installation/network-addons/</li>
+<li>空闲的IP或IP段可供MetalLB分配</li>
+<li>BGP模式需要支持BGP协议的上层路由器</li>
+<li>7946端口在节点间开放</li>
+</ul>
+<h3 id="测试环境">测试环境</h3>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统</td>
+<td>centos7</td>
+</tr>
+<tr>
+<td>内核</td>
+<td>5.13.0-1.el7.elrepo.x86_64</td>
+</tr>
+<tr>
+<td>kubernetes</td>
+<td>v1.19.12</td>
+</tr>
+<tr>
+<td>cilium</td>
+<td>v1.9.3</td>
+</tr>
+<tr>
+<td>metallb</td>
+<td>v0.10.2</td>
+</tr>
+<tr>
+<td>master ip</td>
+<td>192.168.199.77</td>
+</tr>
+<tr>
+<td>LB ip pool</td>
+<td>192.168.199.223-224</td>
+</tr>
+</tbody>
+</table>
+<h3 id="准备">准备</h3>
+<p>如果k8s集群里使用的是kube-proxy，k8s版本&gt;v1.14.2，需要开启strict ARP，而使用了kube-router作为service proxy，默认已开启</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl edit configmap -n kube-system kube-proxy
+
+<span class="c1"># 编辑设置</span>
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: <span class="s2">&#34;ipvs&#34;</span>
+ipvs:
+  strictARP: <span class="nb">true</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="安装">安装</h3>
+<p>以Manifest安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/metallb.yaml
+</code></pre></td></tr></table>
+</div>
+</div><p>安装后，metallb的资源对象隔离在名为metallb-system的namespace，这时metallb还未能工作，LoadBalancerIP未分配</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@k8s-master01 ~<span class="o">]</span><span class="c1"># k get svc istio-ingressgateway -n istio-system</span>
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>                                                     AGE
+istio-ingressgateway   LoadBalancer   10.107.221.79   &lt;pending&gt;   15021:31462/TCP,80:32243/TCP,443:31087/TCP,8081:30765/TCP   36d
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>除了使用manifests安装，社区还提供helm和kustomize方式安装，详见<a href="https://metallb.universe.tf/installation" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/installation</a></p>
+</blockquote>
+<h4 id="配置layer-2模式配置">配置Layer 2模式配置</h4>
+<p>开启layer2模式，需配置一份configMap，添加至集群</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">metallb-system</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    address-pools:
+</span><span class="sd">    - name: default
+</span><span class="sd">      protocol: layer2
+</span><span class="sd">      addresses:
+</span><span class="sd">      - 192.168.199.223-192.168.199.224</span><span class="w">    
+</span></code></pre></td></tr></table>
+</div>
+</div><p>再查看sevice，已分配到了LoadBalancerIP: 192.168.199.223</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@k8s-master01 ~<span class="o">]</span><span class="c1"># k get svc istio-ingressgateway -n istio-system</span>
+NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP       PORT<span class="o">(</span>S<span class="o">)</span>                                                     AGE
+istio-ingressgateway   LoadBalancer   10.107.221.79   192.168.199.223   15021:31462/TCP,80:32243/TCP,443:31087/TCP,8081:30765/TCP   36d
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="配置bgp模式">配置BGP模式</h4>
+<p>开启BGP模式需要上层路由器支持BGP模式，configMap配置如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">metallb-system</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    peers:
+</span><span class="sd">    - peer-address: 192.168.199.68
+</span><span class="sd">      peer-asn: 64512
+</span><span class="sd">      my-asn: 64513
+</span><span class="sd">    address-pools:
+</span><span class="sd">    - name: default
+</span><span class="sd">      protocol: bgp
+</span><span class="sd">      addresses:
+</span><span class="sd">      - 192.168.199.223-192.168.199.224</span><span class="w">    
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>peer-address：BGP路由器IP</li>
+<li>peer-asn: 对方自治系统编号</li>
+<li>my-asn: 本集群自治系统编号</li>
+</ul>
+<blockquote>
+<p>更多配置参考<a href="https://metallb.universe.tf/configuration" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/configuration</a></p>
+</blockquote>
+<h3 id="模拟bgp路由器">模拟BGP路由器</h3>
+<p>在没有上层路由器支持BGP协议的情况下，可通过安装模拟路由器来进行测试验证，模拟路由器有BIRD、Guagga，下面以Ggugga为示例安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 确保yum源</span>
+yum install quagga
+
+<span class="c1"># 关闭selinux</span>
+setsebool -P zebra_write_config <span class="m">1</span> 
+
+<span class="c1"># （可选）配置，或直接使用/etc/quagga/zebra.conf，修改其中的hostname为主机名</span>
+cp /usr/share/doc/quagga-0.99.22.4/zebra.conf.sample /etc/quagga/zebra.conf
+
+<span class="c1"># 启动zebra</span>
+systemctl start zebra
+
+<span class="c1"># 查看zebra状态</span>
+systemctl status zebra
+</code></pre></td></tr></table>
+</div>
+</div><p>配置BGP</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cp /usr/share/doc/quagga-0.99.22.4/bgpd.conf.sample /etc/quagga/bgpd.conf
+
+<span class="c1"># 修改/etc/quagga/bgpd.conf</span>
+vi /etc/quagga/bgpd.conf
+------
+router bgp <span class="m">64512</span>
+
+<span class="c1"># 启动</span>
+systemctl start bgpd
+
+<span class="c1"># 查看bgpd状态</span>
+systemctl status bgpd
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@node68 quagga<span class="o">]</span><span class="c1"># vtysh</span>
+
+Hello, this is Quagga <span class="o">(</span>version 0.99.22.4<span class="o">)</span>.
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+
+node68# conf t 
+node68<span class="o">(</span>config<span class="o">)</span><span class="c1"># router bgp 64512</span>
+node68<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># no auto-summary  </span>
+node68<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># no synchronization  </span>
+node68<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># neighbor 192.168.199.77 remote-as 64513</span>
+node68<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># neighbor 192.168.199.77 description  &#34;k8s master01&#34;</span>
+node68<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># exit</span>
+node68<span class="o">(</span>config<span class="o">)</span><span class="c1"># exit</span>
+node68# write
+
+<span class="c1">#查看BGP建立状态</span>
+node68# show ip bgp summary
+BGP router identifier 192.168.199.68, <span class="nb">local</span> AS number <span class="m">64512</span>
+RIB entries 3, using <span class="m">336</span> bytes of memory
+Peers 1, using <span class="m">4560</span> bytes of memory
+
+Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+192.168.199.77  <span class="m">4</span> <span class="m">64513</span>       <span class="m">2</span>       <span class="m">3</span>        <span class="m">0</span>    <span class="m">0</span>    <span class="m">0</span> 00:00:17        <span class="m">2</span>
+
+Total number of neighbors <span class="m">1</span>
+
+
+node68# <span class="nb">exit</span>
+<span class="c1"># 查看主机路由信息，看到192.168.199.223和192.168.199.224的路由信息已经添加</span>
+<span class="o">[</span>root@node68 ~<span class="o">]</span><span class="c1"># ip route</span>
+default via 192.168.199.1 dev eth0
+169.254.0.0/16 dev eth0  scope link  metric <span class="m">1002</span>
+192.168.199.0/24 dev eth0  proto kernel  scope link  src 192.168.199.68
+192.168.199.223 via 192.168.199.77 dev eth0  proto zebra
+192.168.199.224 via 192.168.199.77 dev eth0  proto zebra
+
+<span class="c1"># 通过LB ip访问集群</span>
+<span class="o">[</span>root@node68 ~<span class="o">]</span><span class="c1"># curl -v 192.168.199.223:80</span>
+<span class="o">{</span><span class="s2">&#34;timestamp&#34;</span>:<span class="s2">&#34;2021-08-13T06:40:22.413+0000&#34;</span>,<span class="s2">&#34;status&#34;</span>:404,<span class="s2">&#34;error&#34;</span>:<span class="s2">&#34;Not Found&#34;</span>,<span class="s2">&#34;message&#34;</span>:<span class="s2">&#34;No message available&#34;</span>,<span class="s2">&#34;path&#34;</span>:<span class="s2">&#34;/&#34;</span><span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="原理">原理</h2>
+<h3 id="layer-2模式">Layer 2模式</h3>
+<h3 id="bgp模式">BGP模式</h3>
+<h2 id="小结">小结</h2>
+<h2 id="参考">参考</h2>
+<p><a href="https://metallb.universe.tf/" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/</a>
+<a href="https://blog.csdn.net/kadwf123/article/details/96838805" target="_blank" rel="noopener noreffer">https://blog.csdn.net/kadwf123/article/details/96838805</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-08-12&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/337b7f99d4a49dc70c104b332bc5a5884110aa3f" target="_blank" title="commit by Bluz Mao(bluz.mao@outlook.com) 337b7f99d4a49dc70c104b332bc5a5884110aa3f: add headers">
-                                    <i class="fas fa-hashtag fa-fw"></i>337b7f9</a></span>
+                <span>Updated on 2021-08-12&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/3c19d4d5e80ab51fce1d6371d07815908e4b453f" target="_blank" title="commit by Bluz Mao(bluz.mao@outlook.com) 3c19d4d5e80ab51fce1d6371d07815908e4b453f: configure author">
+                                    <i class="fas fa-hashtag fa-fw"></i>3c19d4d</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -182,8 +555,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">Bluz Mao</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">Bluz Mao</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
