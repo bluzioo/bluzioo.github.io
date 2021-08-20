@@ -8,9 +8,9 @@
         <title>Kubernetes裸金属环境负载均衡器-MetalLB - Bluz Space</title><meta name="Description" content="MetalLB是一款使用标准路由协议的K8S负载均衡器"><meta property="og:title" content="Kubernetes裸金属环境负载均衡器-MetalLB" />
 <meta property="og:description" content="MetalLB是一款使用标准路由协议的K8S负载均衡器" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bluzioo.github.io/bare-metal-lb/" /><meta property="og:image" content="https://bluzioo.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://bluzioo.github.io/metallb/" /><meta property="og:image" content="https://bluzioo.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-10T15:38:37+08:00" />
-<meta property="article:modified_time" content="2021-08-12T18:45:14+08:00" />
+<meta property="article:modified_time" content="2021-08-10T15:38:37+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://bluzioo.github.io/logo.png"/>
@@ -20,7 +20,7 @@
 <meta name="application-name" content="Bluz Space">
 <meta name="apple-mobile-web-app-title" content="Bluz Space"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://bluzioo.github.io/bare-metal-lb/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://bluzioo.github.io/metallb/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -28,13 +28,13 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/bluzioo.github.io\/bare-metal-lb\/"
-        },"image": ["https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kubernetes","wordcount":  499 ,
-        "url": "https:\/\/bluzioo.github.io\/bare-metal-lb\/","datePublished": "2021-08-10T15:38:37+08:00","dateModified": "2021-08-12T18:45:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/bluzioo.github.io\/metallb\/"
+        },"image": ["https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kubernetes","wordcount":  513 ,
+        "url": "https:\/\/bluzioo.github.io\/metallb\/","datePublished": "2021-08-10T15:38:37+08:00","dateModified": "2021-08-10T15:38:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Bluz Mao","logo": "https:\/\/bluzioo.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
-                "name": "Bluz Mao"
+                "name": "xl.m"
             },"description": "MetalLB是一款使用标准路由协议的K8S负载均衡器"
     }
     </script></head>
@@ -47,7 +47,7 @@
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/bluzioo" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
-                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/bare-metal-lb/" selected>English</option></select>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/metallb/" selected>English</option></select>
                     </a><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
@@ -94,7 +94,7 @@
                 </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/bluzioo" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/bare-metal-lb/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/metallb/" selected>English</option></select>
                 </a></div>
     </div>
 </header>
@@ -109,9 +109,9 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes裸金属环境负载均衡器-MetalLB</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Bluz Mao</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>kubernetes</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;499 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/bare-metal-lb/" class="leancloud_visitors" data-flag-title="Kubernetes裸金属环境负载均衡器-MetalLB">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>xl.m</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>kubernetes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;513 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/metallb/" class="leancloud_visitors" data-flag-title="Kubernetes裸金属环境负载均衡器-MetalLB">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -135,7 +135,7 @@
         <li><a href="#准备">准备</a></li>
         <li><a href="#安装">安装</a>
           <ul>
-            <li><a href="#配置layer-2模式配置">配置Layer 2模式配置</a></li>
+            <li><a href="#配置layer-2模式">配置Layer 2模式</a></li>
             <li><a href="#配置bgp模式">配置BGP模式</a></li>
           </ul>
         </li>
@@ -144,17 +144,24 @@
     </li>
     <li><a href="#原理">原理</a>
       <ul>
-        <li><a href="#layer-2模式">Layer 2模式</a></li>
-        <li><a href="#bgp模式">BGP模式</a></li>
+        <li><a href="#layer-2模式">Layer 2模式</a>
+          <ul>
+            <li><a href="#layer-2模式的局限性">Layer 2模式的局限性</a></li>
+          </ul>
+        </li>
+        <li><a href="#bgp模式">BGP模式</a>
+          <ul>
+            <li><a href="#bgp模式的局限性">BGP模式的局限性</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#小结">小结</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="背景">背景</h2>
-<p>Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务</p>
-<p>在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题</p>
+<p>Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务。</p>
+<p>在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题。</p>
 <p>裸金属环境的负载均衡器开源解决方案：</p>
 <ul>
 <li>MetalLB</li>
@@ -164,17 +171,17 @@
 <h2 id="概念">概念</h2>
 <p>MetalLB具备两项功能：address allocation和external announcement</p>
 <h3 id="address-allocation">Address Allocation</h3>
-<p>MetalLB支持地址分配，前提是配置好IP池。面向内网的集群，即分配好内网IP段，而面向公网的，也可列举可用的公网IP列表</p>
-<p>如果不指定service的spec.loadbalancerIP，metalLB则会从IP池随机分配给LoadBalancer型的service</p>
+<p>MetalLB支持地址分配，前提是配置好IP池。面向内网的集群，即分配好内网IP段，而面向公网的，也可列举可用的公网IP列表。</p>
+<p>如果不指定service的spec.loadbalancerIP，metalLB则会从IP池随机分配给LoadBalancer型的service。</p>
 <h3 id="external-announcement">External Announcement</h3>
-<p>分配了的LB IP对外又是怎么被发现及访问到？MetalLB提供了两种模式：Layer 2和BGP</p>
-<p>在Layer 2模式下，可指定几台集群内主机作为响应LB IP的地址发现（ARP for IPv4, NDP for IPv6）</p>
-<p>在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息</p>
+<p>分配了的LB IP对外又是怎么被发现及访问到？MetalLB提供了两种模式：Layer 2和BGP。</p>
+<p>在Layer 2模式下，可指定几台集群内主机作为响应LB IP的地址发现（ARP for IPv4, NDP for IPv6）。</p>
+<p>在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息。</p>
 <h2 id="部署">部署</h2>
 <h3 id="环境要求">环境要求</h3>
 <ul>
 <li>Kubernetes version &gt; 1.13.0, 集群没有负载均衡器</li>
-<li>集群网络兼容MetalLB，兼容清单https://metallb.universe.tf/installation/network-addons/</li>
+<li>集群网络兼容MetalLB，兼容清单<a href="https://metallb.universe.tf/installation/network-addons/" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/installation/network-addons/</a></li>
 <li>空闲的IP或IP段可供MetalLB分配</li>
 <li>BGP模式需要支持BGP协议的上层路由器</li>
 <li>7946端口在节点间开放</li>
@@ -219,7 +226,7 @@
 </tbody>
 </table>
 <h3 id="准备">准备</h3>
-<p>如果k8s集群里使用的是kube-proxy，k8s版本&gt;v1.14.2，需要开启strict ARP，而使用了kube-router作为service proxy，默认已开启</p>
+<p>如果k8s集群里使用的是kube-proxy，k8s版本&gt;v1.14.2，需要开启strict ARP，而使用了kube-router作为service proxy，默认已开启。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -270,7 +277,7 @@ istio-ingressgateway   LoadBalancer   10.107.221.79   &lt;pending&gt;   15021:31
 </div><blockquote>
 <p>除了使用manifests安装，社区还提供helm和kustomize方式安装，详见<a href="https://metallb.universe.tf/installation" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/installation</a></p>
 </blockquote>
-<h4 id="配置layer-2模式配置">配置Layer 2模式配置</h4>
+<h4 id="配置layer-2模式">配置Layer 2模式</h4>
 <p>开启layer2模式，需配置一份configMap，添加至集群</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -517,27 +524,48 @@ default via 192.168.199.1 dev eth0
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="原理">原理</h2>
+<p>Metallb包含两个组件，Controller和Speaker，Controller为Deployment部署方式，而Speaker则采用daemonset方式部署到Kubernetes集群各个Node节点。</p>
+<p>具体的工作原理如下图所示，Controller负责监听service变化，当service配置为LoadBalancer模式时，从IP池分配给到相应的IP，并进行IP的生命周期管理。Speaker则依据Service的变化，按具体的协议发起相应的广播或应答，根据工作模式（Layer2/BGP)的不同，可采用Leader的方式或负载均衡的方式来响应请求。</p>
+<p>当业务流量通过TCP/UDP协议到达指定的Node时，由Node上面运行的Kube-Proxy组件对流量进行处理，并分发到对应的Pod上面。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/metallb-principle.png"
+        data-srcset="/images/metallb-principle.png, /images/metallb-principle.png 1.5x, /images/metallb-principle.png 2x"
+        data-sizes="auto"
+        alt="/images/metallb-principle.png"
+        title="metallb-pricinple" /></p>
 <h3 id="layer-2模式">Layer 2模式</h3>
+<p>第2层模式下，Metallb会在Node节点中选出一台做为Leader，与服务IP相关的所有流量都会流向该节点。在该节点上， kube-proxy将流量传播到所有服务的Pod，而当leader节点出现故障时，会由另一个节点接管。</p>
+<h4 id="layer-2模式的局限性">Layer 2模式的局限性</h4>
+<p>在二层模式中会存在以下两种局限性：单节点瓶颈以及故障转移慢的情况。</p>
+<p>单个leader选举节点接收服务IP的所有流量。这意味着服务的入口带宽被限制为单个节点的带宽，单节点的流量处理能力将成为整个集群的接收外部流量的瓶颈。</p>
+<p>在当前的实现中，节点之间的故障转移取决于客户端的合作。当发生故障转移时，MetalLB发送许多2层数据包，以通知客户端与服务IP关联的MAC地址已更改。大多数操作系统能正确处理数据包，并迅速更新其邻居缓存。在这种情况下，故障转移将在几秒钟内发生。在计划外的故障转移期间，在有故障的客户端刷新其缓存条目之前，将无法访问服务IP。对于生产环境如果要求毫秒性的故障切换，目前Metallb可能会比较难适应要求。</p>
 <h3 id="bgp模式">BGP模式</h3>
-<h2 id="小结">小结</h2>
+<p>在BGP模式下，群集中的每个节点都与网络路由器建立BGP对等会话，并使用该对等会话通告外部群集服务的IP。假设您的路由器配置为支持多路径，则可以实现真正的负载平衡：MetalLB发布的路由彼此等效。这意味着路由器将一起使用所有下一跳，并在它们之间进行负载平衡。数据包到达节点后，kube-proxy负责流量路由的最后一跳，将数据包送达服务中的一个特定容器。</p>
+<p>负载平衡的方式取决于您特定的路由器型号和配置，但是常见的行为是基于数据包哈希值来平衡每个连接，这意味着单个TCP或UDP会话的所有数据包都将定向到群集中的单个计算机。</p>
+<h4 id="bgp模式的局限性">BGP模式的局限性</h4>
+<p>基于BGP的路由器实现无状态负载平衡。他们通过对数据包头中的某些字段进行哈希处理，并将该哈希值用作可用后端数组的索引，将给定的数据包分配给特定的下一跳。
+但路由器中使用的哈希通常不稳定，因此，只要后端集的大小发生变化（例如，当节点的BGP会话断开时），现有连接就会被随机有效地重新哈希，这意味着大多数现有连接最终将突然转发到另一后端，而该后端不知道所讨论的连接。</p>
 <h2 id="参考">参考</h2>
-<p><a href="https://metallb.universe.tf/" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/</a>
-<a href="https://blog.csdn.net/kadwf123/article/details/96838805" target="_blank" rel="noopener noreffer">https://blog.csdn.net/kadwf123/article/details/96838805</a></p>
+<ul>
+<li><a href="https://metallb.universe.tf/" target="_blank" rel="noopener noreffer">https://metallb.universe.tf/</a></li>
+<li><a href="https://blog.csdn.net/kadwf123/article/details/96838805" target="_blank" rel="noopener noreffer">https://blog.csdn.net/kadwf123/article/details/96838805</a></li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-08-12&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/3c19d4d5e80ab51fce1d6371d07815908e4b453f" target="_blank" title="commit by Bluz Mao(bluz.mao@outlook.com) 3c19d4d5e80ab51fce1d6371d07815908e4b453f: configure author">
-                                    <i class="fas fa-hashtag fa-fw"></i>3c19d4d</a></span>
+                <span>Updated on 2021-08-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/bare-metal-lb/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/metallb/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://bluzioo.github.io/bare-metal-lb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB" data-via="xxxx" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://bluzioo.github.io/bare-metal-lb/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://bluzioo.github.io/bare-metal-lb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://bluzioo.github.io/bare-metal-lb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://bluzioo.github.io/bare-metal-lb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://bluzioo.github.io/metallb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB" data-via="xxxx" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://bluzioo.github.io/metallb/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://bluzioo.github.io/metallb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://bluzioo.github.io/metallb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://bluzioo.github.io/metallb/" data-title="Kubernetes裸金属环境负载均衡器-MetalLB"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -555,7 +583,7 @@ default via 192.168.199.1 dev eth0
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">Bluz Mao</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">xl.m</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
