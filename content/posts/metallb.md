@@ -4,7 +4,7 @@ date: 2021-08-10T15:38:37+08:00
 draft: false
 keywords: ["loadbalancer", "kubernetes", "k8s", "metallb"]
 description: "MetalLB是一款使用标准路由协议的K8S负载均衡器"
-tags: ["kubernetes"]
+tags: ["kubernetes", "loadbalancer"]
 categories: ["kubernetes"]
 ---
 
@@ -246,7 +246,7 @@ Metallb包含两个组件，Controller和Speaker，Controller为Deployment部署
 
 第2层模式下，Metallb会在Node节点中选出一台做为Leader，与服务IP相关的所有流量都会流向该节点。在该节点上， kube-proxy将流量传播到所有服务的Pod，而当leader节点出现故障时，会由另一个节点接管。
 
-#### Layer 2模式的局限性
+局限性：
 
 在二层模式中会存在以下两种局限性：单节点瓶颈以及故障转移慢的情况。
 
@@ -260,7 +260,7 @@ Metallb包含两个组件，Controller和Speaker，Controller为Deployment部署
 
 负载平衡的方式取决于您特定的路由器型号和配置，但是常见的行为是基于数据包哈希值来平衡每个连接，这意味着单个TCP或UDP会话的所有数据包都将定向到群集中的单个计算机。
 
-#### BGP模式的局限性
+局限性：
 
 基于BGP的路由器实现无状态负载平衡。他们通过对数据包头中的某些字段进行哈希处理，并将该哈希值用作可用后端数组的索引，将给定的数据包分配给特定的下一跳。
 但路由器中使用的哈希通常不稳定，因此，只要后端集的大小发生变化（例如，当节点的BGP会话断开时），现有连接就会被随机有效地重新哈希，这意味着大多数现有连接最终将突然转发到另一后端，而该后端不知道所讨论的连接。
@@ -268,4 +268,5 @@ Metallb包含两个组件，Controller和Speaker，Controller为Deployment部署
 ## 参考
 
 * <https://metallb.universe.tf/>
+* <https://blog.csdn.net/keith6785753/article/details/107088632/>
 * <https://blog.csdn.net/kadwf123/article/details/96838805>

@@ -26,7 +26,7 @@
         "@type": "WebSite",
         "url": "https:\/\/bluzioo.github.io\/","inLanguage": "en","author": {
                 "@type": "Person",
-                "name": "xl.m"
+                "name": "zulb"
             },"description": "About LoveIt Theme","image": "https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png","thumbnailUrl": "https:\/\/bluzioo.github.io\/images\/screenshot.png","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","name": "Bluz Space"
     }
     </script></head>
@@ -106,8 +106,21 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/bluzioo" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/xxxx" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="https://www.instagram.com/xxxx" title="Instagram" target="_blank" rel="noopener noreffer me"><i class="fab fa-instagram fa-fw"></i></a><a href="https://facebook.com/xxxx" title="facebook" target="_blank" rel="noopener noreffer me"><i class="fab fa-facebook fa-fw"></i></a><a href="https://t.me/xxxx" title="Telegram" target="_blank" rel="noopener noreffer me"><i class="fab fa-telegram-plane fa-fw"></i></a><a href="https://www.youtube.com/user/xxxx" title="YouTube" target="_blank" rel="noopener noreffer me"><i class="fab fa-youtube fa-fw"></i></a><a href="https://mastodon.technology/@xxxx" title="Mastodon" target="_blank" rel="noopener noreffer me"><i class="fab fa-mastodon fa-fw"></i></a><a href="mailto:bluz.mao@outlook.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/istio-learning/">Istio初探</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>zulb</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-26">2021-08-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/istio/"><i class="far fa-folder fa-fw"></i>istio</a></span></div><div class="content">概述 回望应用架构的演进，单体 -&gt; SOA -&gt; 微服务，不同的架构在一个企业发展的不同时期都有重要的意义。
+在微服务架构中，一个应用程序基于领域驱动设计分解成不同的小服务，服务间的通信使用HTTP Rest、gRPC等协议，为满足服务治理等需求，微服务中间件都会提供不同语言的SDK供服务组件集成。
+微服务架构优势在于模块化，扩展性，分布式等，然而在渐渐的落地实践时，也暴露出了一些问题。微服务SDK囊括了服务注册发现，负载均衡，熔断，限流等功能，与业务应用耦合在一个可执行程序，这在SDK需要升级时，本与业务无关的需求，业务应用也需进行发布升级。同时，因服务的异构性，对不同语言的SDK进行维护也是一种煎熬。于是，为了使服务间的通信进一步与业务应用解耦，催生了服务网格（Service Mesh）。
+姑且把服务网格比作是应用程序或者说微服务间的 TCP/IP，负责服务之间的网络调用、限流、熔断和监控。对于编写应用程序来说一般无须关心 TCP/IP 这一层（比如通过 HTTP 协议的 RESTful 应用），同样使用 Service Mesh 也就无须关心服务之间的那些原本通过服务框架实现的事情，比如 Spring Cloud、Netflix OSS 和其他中间件，现在只要交给 Service Mesh 就可以了。
+目前两款流行的 Service Mesh 开源软件 Istio 和 Linkerd 都可以直接在 Kubernetes 中集成，其中 Linkerd 已经成为 CNCF 中的项目。
+Istio 简介 Service Mesh 一词最早由开发 Linkerd 的 Buoyant 公司提出，Willian Morgan，Buoyant CEO 对 Service Mesh 的解释：
+ Service Mesh 是一个专门处理服务通讯的基础设施层。它的职责是在由云原生应用组成服务的复杂拓扑结构下进行可靠的请求传送。在实践中，它是一组和应用服务部署在一起的轻量级的网络代理，并且对应用服务透明。
+ 服务网格的需求包括服务发现、负载均衡、故障恢复、度量和监控等。服务网格通常还有更复杂的运维需求，比如 A/B 测试、金丝雀发布、速率限制、访问控制和端到端认证。
+Istio 可以轻松地创建一个已经部署了服务的网络，而服务的代码只需很少更改甚至无需更改。通过在整个环境中部署一个特殊的 sidecar 代理为服务添加 Istio 的支持，而代理会拦截微服务之间的所有网络通信，然后使用其控制平面的功能来配置和管理 Istio，这包括：</div><div class="post-footer">
+        <a href="/istio-learning/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/istio/">istio</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/metallb/">Kubernetes裸金属环境负载均衡器-MetalLB</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>xl.m</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-10">2021-08-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>kubernetes</a></span></div><div class="content">背景 Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务。
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>zulb</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-10">2021-08-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>kubernetes</a></span></div><div class="content">背景 Kubernetes service对外提供服务的方式有NodePort/ClusterIP/Ingress/LoadBalancer。NodePort以集群内主机绑定随机或自定义端口方式暴露服务，存在单点问题，不会用于生产环境。Ingress基于7层协议，只支持http/https，搭配Ingress Controller再前置LVS-keepalived或LoadBalancer才可对外提供高可用服务。
 在公有云的K8S集群通常使用云厂商的LB对外暴露的方式，如AWS的ELB。由于K8S本身不提供LB服务，就需解决自建方式（裸金属环境）的负载均衡器缺失问题。
 裸金属环境的负载均衡器开源解决方案：
  MetalLB OpenELB （原PorterLB）  以下对MetalLB进行展开
@@ -119,10 +132,11 @@ External Announcement 分配了的LB IP对外又是怎么被发现及访问到�
 在BGP模式下，需要上层路由器支持BGP协议，MetalLB与路由器建立BGP session，更新LB IP的路由信息。
 部署 环境要求  Kubernetes version &gt; 1.13.0, 集群没有负载均衡器 集群网络兼容MetalLB，兼容清单https://metallb.universe.tf/installation/network-addons/ 空闲的IP或IP段可供MetalLB分配 BGP模式需要支持BGP协议的上层路由器 7946端口在节点间开放  测试环境    组件 描述     系统 centos7   内核 5.13.0-1.el7.elrepo.x86_64   kubernetes v1.19.12   cilium v1.</div><div class="post-footer">
         <a href="/metallb/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a>,&nbsp;<a href="/tags/loadbalancer/">loadbalancer</a></div></div>
 </article></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">xl.m</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">zulb</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
