@@ -1,5 +1,5 @@
 ---
-title: "Istio初探"
+title: "Istio 初探"
 date: 2021-08-26T11:35:08+08:00
 draft: false
 keywords: ["istio"]

@@ -4,6 +4,18 @@ date: 2021-08-24T14:43:15+08:00
 draft: true
 ---
 
+
+```yaml
+
+api_inner/v?/     # 过渡时用域名sage.dev.netfuse.cn，组件内部鉴权
+api_basic/v?/     # 没有鉴权，
+api_core/v?/      # 有鉴权，
+api/v?/           # openApi,
+v?/               # 供前端使用api,  过渡时用域名sage.dev.netfuse.cn
+
+
+```
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
