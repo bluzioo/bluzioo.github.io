@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>devops - Tag - Bluz Space</title>
+        <link>https://bluzioo.github.io/tags/devops/</link>
+        <description>devops - Tag - Bluz Space</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bluz.mao@outlook.com (maozw)</managingEditor>
+            <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/tags/devops/" rel="self" type="application/rss+xml" /><item>
+    <title>Telepresence</title>
+    <link>https://bluzioo.github.io/telepresence/</link>
+    <pubDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://bluzioo.github.io/telepresence/</guid>
+    <description><![CDATA[概述 在对微服务进行容器化部署至 Kubernetes 这个过程属于持续交付阶段，已经通过 Argo CD 等交付工具解决。然而，如果我们要在本地开发调试一个服务 A，但服务 A 可能依赖服务B、C，而服务 B 又有一层依赖 D，我们就需要在本地把服务 B、C、D 都搭建起来才能调试服务 A。这显然是一个很痛苦的过程。
+Telepresence 是一个 CNCF 基金会下的项目。它的工作原理是在本地和 Kubernetes 集群中搭建一个透明的双向代理，这使得我们可以在本地用熟悉的 IDE 和调试工具来运行一个微服务，同时该服务还可以无缝的与 Kubernetes 集群中的其他服务进行交互，好像它就运行在这个集群中一样。
+Telepresence 实践 安装 在本地环境安装，参考 https://www.telepresence.io/docs/latest/install/
+使用场景 以 sage 服务为例，在 ARGO CD 配置 sage 服务部署至 Kubernetes 开发测试环境，查看 sage 服务是否运行。
+1 2 3  [root@k8s-master01 ~]# kubectl get pod -n wjyl-dev NAME READY STATUS RESTARTS AGE sage-aaa5686745-xxft9 2/2 Running 1 7h38m   此时 sage pod 有两个 container 一个是 sage 服务，另一个是 istio-proxy。请求下测试接口，显示的数据是 &ldquo;from k8s&rdquo;]]></description>
+</item></channel>
+</rss>

@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes裸金属环境负载均衡器-MetalLB"
+title: "Kubernetes 裸金属环境负载均衡器 - MetalLB"
 date: 2021-08-10T15:38:37+08:00
 draft: false
 keywords: ["loadbalancer", "kubernetes", "k8s", "metallb"]

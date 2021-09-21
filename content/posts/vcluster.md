@@ -1,10 +1,10 @@
 ---
-title: "loft vcluster初探"
+title: "loft vcluster 初探"
 date: 2021-09-15T17:21:09+08:00
 draft: false
 keywords: ["virtual cluster"]
 description: "Kubernetes虚拟集群"
-tags: ["kubernetes"]
+tags: ["kubernetes", "k3s"]
 categories: ["kubernetes"]
 ---
 

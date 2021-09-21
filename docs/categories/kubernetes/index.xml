@@ -4,8 +4,19 @@
         <link>https://bluzioo.github.io/categories/kubernetes/</link>
         <description>kubernetes - Category - Bluz Space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bluz.mao@outlook.com (maozw)</managingEditor>
-            <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 15 Sep 2021 17:21:09 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/categories/kubernetes/" rel="self" type="application/rss+xml" /><item>
-    <title>loft vcluster初探</title>
+            <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/categories/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Telepresence</title>
+    <link>https://bluzioo.github.io/telepresence/</link>
+    <pubDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://bluzioo.github.io/telepresence/</guid>
+    <description><![CDATA[概述 在对微服务进行容器化部署至 Kubernetes 这个过程属于持续交付阶段，已经通过 Argo CD 等交付工具解决。然而，如果我们要在本地开发调试一个服务 A，但服务 A 可能依赖服务B、C，而服务 B 又有一层依赖 D，我们就需要在本地把服务 B、C、D 都搭建起来才能调试服务 A。这显然是一个很痛苦的过程。
+Telepresence 是一个 CNCF 基金会下的项目。它的工作原理是在本地和 Kubernetes 集群中搭建一个透明的双向代理，这使得我们可以在本地用熟悉的 IDE 和调试工具来运行一个微服务，同时该服务还可以无缝的与 Kubernetes 集群中的其他服务进行交互，好像它就运行在这个集群中一样。
+Telepresence 实践 安装 在本地环境安装，参考 https://www.telepresence.io/docs/latest/install/
+使用场景 以 sage 服务为例，在 ARGO CD 配置 sage 服务部署至 Kubernetes 开发测试环境，查看 sage 服务是否运行。
+1 2 3  [root@k8s-master01 ~]# kubectl get pod -n wjyl-dev NAME READY STATUS RESTARTS AGE sage-aaa5686745-xxft9 2/2 Running 1 7h38m   此时 sage pod 有两个 container 一个是 sage 服务，另一个是 istio-proxy。请求下测试接口，显示的数据是 &ldquo;from k8s&rdquo;]]></description>
+</item><item>
+    <title>loft vcluster 初探</title>
     <link>https://bluzioo.github.io/vcluster/</link>
     <pubDate>Wed, 15 Sep 2021 17:21:09 &#43;0800</pubDate>
     <author>Author</author>
@@ -21,7 +32,7 @@ vcluster 是运行在Kubernetes集群上的虚拟集群。vcluster虚拟集群�
   PersistentVolumeClaims：如果在虚拟集群中创建了持久卷声明，它们将在主机集群中的虚拟集群的命名空间中进行变异和创建。如果它们绑定在主机集群中，则相应的持久卷信息将同步回虚拟集群。
   Configmaps &amp; Secrets：挂载到 pod 的虚拟集群中的 ConfigMaps 或 secrets 将同步到主机集群，所有其他 configmaps 或 secrets 将纯粹保留在虚拟集群中。]]></description>
 </item><item>
-    <title>Kubernetes裸金属环境负载均衡器-MetalLB</title>
+    <title>Kubernetes 裸金属环境负载均衡器 - MetalLB</title>
     <link>https://bluzioo.github.io/metallb/</link>
     <pubDate>Tue, 10 Aug 2021 15:38:37 &#43;0800</pubDate>
     <author>Author</author>
