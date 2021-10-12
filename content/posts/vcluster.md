@@ -1,5 +1,5 @@
 ---
-title: "loft vcluster 初探"
+title: "Loft VCluster 虚拟集群"
 date: 2021-09-15T17:21:09+08:00
 draft: false
 keywords: ["virtual cluster"]
@@ -19,11 +19,11 @@ vcluster 是运行在Kubernetes集群上的虚拟集群。vcluster虚拟集群�
 * 即使以namesapce隔离，同一集群还是共享这控制平面，如果对控制平面进行配置调整有误的话，将会造成整个集群不可用
 
 vcluster 与其他隔离方案的一个对比参考如下官网的宣传
-![vcluster-comparison.png](/images/vcluster-comparison.png)
+![vcluster-comparison.png](/download/attachments/31754800/vcluster-comparison.png)
 
 ## vcluster 架构
 
-![vcluster-architecture.svg](/images/vcluster-architecture.svg)
+![vcluster-architecture.svg](/download/attachments/31754800/images/vcluster-architecture.svg)
 
 vcluster本身只包含核心 Kubernetes 组件：API 服务器、控制器管理器和存储后端（如 etcd、sqlite、mysql 等）。为了减少虚拟集群开销，vcluster 构建在k3s 上，这是一个完全有效的、经过认证的、轻量级的 Kubernetes 发行版，它将 Kubernetes 组件编译成单个二进制文件并禁用所有不需要的 Kubernetes 功能，例如 pod 调度程序或某些控制器。
 
@@ -54,18 +54,144 @@ sudo mv vcluster /usr/local/bin;
 
 #### 创建虚拟集群
 
-```bash
-vcluster create vcluster-1 -n host-namespace-1
+官方提供三种方式创建，包括vcluster 客户端、helm、kubectl，为了方便定制配置，以下采用kubectl进行创建。
 
-vcluster create vcluster-1 -n host-namespace-1 --expose 
+dev-cluster.yaml
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dev-cluster
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dev-cluster
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets", "services", "services/proxy", "pods", "pods/proxy", "pods/attach", "pods/portforward", "pods/exec", "pods/log", "events", "endpoints", "persistentvolumeclaims"]
+    verbs: ["*"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses"]
+    verbs: ["*"]
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["statefulsets"]
+    verbs: ["get", "list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dev-cluster
+subjects:
+  - kind: ServiceAccount
+    name: dev-cluster
+roleRef:
+  kind: Role
+  name: dev-cluster
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-cluster
+spec:
+  type: ClusterIP
+  ports:
+    - name: https
+      port: 443
+      targetPort: 8443
+      protocol: TCP
+  selector:
+    app: dev-cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-cluster-headless
+spec:
+  ports:
+    - name: https
+      port: 443
+      targetPort: 8443
+      protocol: TCP
+  clusterIP: None
+  selector:
+    app: dev-cluster
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dev-cluster
+  labels:
+    app: dev-cluster
+spec:
+  serviceName: dev-cluster-headless
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-cluster
+  template:
+    metadata:
+      labels:
+        app: dev-cluster
+    spec:
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: dev-cluster
+      containers:
+      - image: rancher/k3s:v1.19.5-k3s2
+        name: virtual-cluster
+        command:
+          - "/bin/k3s"
+        args:
+          - "server"
+          - "--write-kubeconfig=/k3s-config/kube-config.yaml"
+          - "--data-dir=/data"
+          - "--disable=traefik,servicelb,metrics-server,local-storage"
+          - "--disable-network-policy"
+          - "--disable-agent"
+          - "--disable-scheduler"
+          - "--disable-cloud-controller"
+          - "--flannel-backend=none"
+          - "--kube-controller-manager-arg=controllers=*,-nodeipam,-nodelifecycle,-persistentvolume-binder,-attachdetach,-persistentvolume-expander,-cloud-node-lifecycle"  
+          - "--service-cidr=10.96.0.0/12"
+        volumeMounts:
+          - mountPath: /data
+            name: data
+      - name: syncer
+        image: "loftsh/vcluster:0.3.0"
+        args:
+          - --service-name=dev-cluster
+          - --suffix=dev-cluster
+          - --owning-statefulset=dev-cluster
+          - --out-kube-config-secret=dev-cluster
+          - --tls-san=192.168.199.77
+        volumeMounts:
+          - mountPath: /data
+            name: data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: local-path        
+        resources:
+          requests:
+            storage: 5Gi
 ```
 
-vcluster 另外也可以通过helm，kubectl创建虚拟集群
+```bash
+kubectl create namespace dev
+kubectl apply -f dev-cluster.yaml -n dev
+```
 
 #### 连接虚拟集群
 
 ```bash
-vcluster connect vcluster-1 -n host-namespace-1
+vcluster connect dev-cluster -n dev
 ```
 
 在当前目录会生产一份kubeconfig.yaml
@@ -103,23 +229,23 @@ kubectl get namespaces
 ```bash
 NAME               STATUS   AGE
 default            Active   11d
-host-namespace-1   Active   9m17s
+dev                Active   9m17s
 kube-node-lease    Active   11d
 kube-public        Active   11d
 kube-system        Active   11d
 ```
 
-查看在host-namespace-1下的deployment，并不存在nginx-deployment，表明vcluster不会同步deployment资源
+查看在命名空间dev下的deployment，并不存在nginx-deployment，表明vcluster不会同步deployment资源
 
 ```bash
-kubectl get deployments -n host-namespace-1
+kubectl get deployments -n dev
 ```
 
 ```bash
-No resources found in host-namespace-1 namespace.
+No resources found in dev namespace.
 ```
 
-查看在host-namespace-1下的pods，存在一个名为nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-vcluster-1的pod
+查看在命名空间dev下的pods，存在一个名为nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-dev-cluster的pod
 
 ```bash
 kubectl get pods -n host-namespace-1
@@ -127,9 +253,51 @@ kubectl get pods -n host-namespace-1
 
 ```bash
 NAME                                                          READY   STATUS    RESTARTS   AGE
-coredns-66c464876b-p275l-x-kube-system-x-vcluster-1           1/1     Running   0          14m
-nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-vcluster-1   1/1     Running   0          10m
-vcluster-1-0                                                  2/2     Running   0          14m
+coredns-66c464876b-p275l-x-kube-system-x-dev-cluster           1/1     Running   0          14m
+nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-dev-cluster   1/1     Running   0          10m
+dev-cluster-0                                                  2/2     Running   0          14m
+```
+
+要想在外部访问该虚拟集群，需要暴露该vcluster，可以同过 ingress、nodeport、loadbalance，下面以 nodeport为例。
+
+nodeport.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-cluster-nodeport
+  namespace: dev
+spec:
+  selector:
+    app: dev-cluster
+  ports:
+    - name: https
+      port: 443
+      targetPort: 8443
+      protocol: TCP
+  type: NodePort
+```
+
+注意在host 集群上下文下进行创建nodeport.yaml
+
+```bash
+kubectl apply -f nodeport.yaml
+```
+
+```bash
+# kubectl get svc -n dev dev-cluster-nodeport
+
+NAME                  TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)         AGE
+dev-cluster-nodeport   NodePort   10.99.72.124   <none>        443:31344/TCP   58m
+```
+
+```bash
+vcluster connect dev-cluster -n dev --server=https://192.168.199.77:31344
+
+export KUBECONFIG=./kubeconfig.yaml
+
+kubectl get ns
 ```
 
 ## 小结
