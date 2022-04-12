@@ -202,6 +202,10 @@ spec:
       app.kubernetes.io/name: sage
 ```
 
+### 网关
+
+![api-gateway-istio-service-mesh.jpg](/images/api-gateway-istio-service-mesh.jpg)
+
 ## 场景应用
 
 ### 金丝雀
@@ -217,4 +221,5 @@ spec:
 * <https://jimmysong.io/>
 * <https://www.servicemesher.com/>
 * <https://zhuanlan.zhihu.com/p/369068128>
+* <https://skyao.io/talk/202103-dapr-from-servicemesh-to-cloudnative/>
 

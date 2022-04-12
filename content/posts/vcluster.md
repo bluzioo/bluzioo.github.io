@@ -300,6 +300,41 @@ export KUBECONFIG=./kubeconfig.yaml
 kubectl get ns
 ```
 
+#### 附：helm 安装
+
+设置values
+
+```yaml
+vcluster:
+  image: rancher/k3s:v1.19.5-k3s2
+  extraArgs:
+    - --service-cidr=10.96.0.0/12
+syncer:
+  extraArgs:
+  - '--fake-nodes=false'
+  - '--tls-san=192.168.199.77'
+  - '--sync-all-nodes'
+storage:
+  persistence: true
+  size: 5Gi
+  className: local-path
+rbac:
+  clusterRole:
+    create: true
+  role:
+    create: true 
+```
+
+helm 安装命令
+
+```bash
+helm upgrade --install test-cluster vcluster \
+  --values helm-values.yaml \
+  --repo https://charts.loft.sh \
+  --namespace test \
+  --repository-config=''
+```
+
 ## 小结
 
 vcluster的优势如下：

@@ -5,7 +5,7 @@
         <description>All Posts | Bluz Space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bluz.mao@outlook.com (maozw)</managingEditor>
             <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Telepresence</title>
+    <title>Telepresence 容器化微服务本地开发</title>
     <link>https://bluzioo.github.io/telepresence/</link>
     <pubDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</pubDate>
     <author>Author</author>
@@ -16,7 +16,7 @@ Telepresence 实践 安装 在本地环境安装，参考 https://www.telepresen
 使用场景 以 sage 服务为例，在 ARGO CD 配置 sage 服务部署至 Kubernetes 开发测试环境，查看 sage 服务是否运行。
 1 2 3  [root@k8s-master01 ~]# kubectl get pod -n wjyl-dev NAME READY STATUS RESTARTS AGE sage-aaa5686745-xxft9 2/2 Running 1 7h38m   此时 sage pod 有两个 container 一个是 sage 服务，另一个是 istio-proxy。请求下测试接口，显示的数据是 &ldquo;from k8s&rdquo;]]></description>
 </item><item>
-    <title>loft vcluster 初探</title>
+    <title>Loft VCluster 虚拟集群</title>
     <link>https://bluzioo.github.io/vcluster/</link>
     <pubDate>Wed, 15 Sep 2021 17:21:09 &#43;0800</pubDate>
     <author>Author</author>

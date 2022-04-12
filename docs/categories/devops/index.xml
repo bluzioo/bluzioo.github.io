@@ -5,7 +5,7 @@
         <description>devops - Category - Bluz Space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bluz.mao@outlook.com (maozw)</managingEditor>
             <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/categories/devops/" rel="self" type="application/rss+xml" /><item>
-    <title>Telepresence</title>
+    <title>Telepresence 容器化微服务本地开发</title>
     <link>https://bluzioo.github.io/telepresence/</link>
     <pubDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</pubDate>
     <author>Author</author>

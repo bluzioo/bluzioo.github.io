@@ -1,4 +1,4 @@
-# Telepresence
+# Telepresence 容器化微服务本地开发
 
 
 ## 概述
@@ -77,4 +77,5 @@ intercepted
 * <https://www.telepresence.io/docs/latest/quick-start/>
 * <https://jimmysong.io/blog/how-to-debug-microservices-in-kubernetes-with-proxy-sidecar-or-service-mesh/>
 * <https://zhuanlan.zhihu.com/p/106051607>
+* <https://codefresh.io/kubernetes-tutorial/telepresence-2-local-development/>
 

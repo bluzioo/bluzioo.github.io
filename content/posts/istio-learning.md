@@ -213,14 +213,6 @@ spec:
 
 ![api-gateway-istio-service-mesh.jpg](/images/api-gateway-istio-service-mesh.jpg)
 
-方式	控制器	功能
-NodePort/LoadBalancer	Kubernetes	负载均衡
-Kubernetes Ingress	Ingress Controller	负载均衡、TLS、虚拟主机、流量路由
-Istio Gateway	Istio	负载均衡、TLS、虚拟主机、高级流量路由、其他 Istio 的高级功能
-API 网关	API Gateway	负载均衡、TLS、虚拟主机、流量路由、API 生命周期管理、权限认证、数据聚合、账单和速率限制
-
-
-
 ## 场景应用
 
 ### 金丝雀

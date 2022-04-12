@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>loft vcluster 初探 - Bluz Space</title><meta name="Description" content="Kubernetes虚拟集群"><meta property="og:title" content="loft vcluster 初探" />
+        <title>Loft VCluster 虚拟集群 - Bluz Space</title><meta name="Description" content="Kubernetes虚拟集群"><meta property="og:title" content="Loft VCluster 虚拟集群" />
 <meta property="og:description" content="Kubernetes虚拟集群" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bluzioo.github.io/vcluster/" /><meta property="og:image" content="https://bluzioo.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-09-15T17:21:09+08:00" />
-<meta property="article:modified_time" content="2021-09-16T20:52:43+08:00" />
+<meta property="article:modified_time" content="2021-10-12T11:21:52+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://bluzioo.github.io/logo.png"/>
 
-<meta name="twitter:title" content="loft vcluster 初探"/>
+<meta name="twitter:title" content="Loft VCluster 虚拟集群"/>
 <meta name="twitter:description" content="Kubernetes虚拟集群"/>
 <meta name="application-name" content="Bluz Space">
 <meta name="apple-mobile-web-app-title" content="Bluz Space"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -24,13 +24,13 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "loft vcluster 初探",
+        "headline": "Loft VCluster 虚拟集群",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/bluzioo.github.io\/vcluster\/"
-        },"image": ["https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kubernetes, k3s","wordcount":  280 ,
-        "url": "https:\/\/bluzioo.github.io\/vcluster\/","datePublished": "2021-09-15T17:21:09+08:00","dateModified": "2021-09-16T20:52:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/bluzioo.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "kubernetes, k3s","wordcount":  547 ,
+        "url": "https:\/\/bluzioo.github.io\/vcluster\/","datePublished": "2021-09-15T17:21:09+08:00","dateModified": "2021-10-12T11:21:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Bluz Mao","logo": "https:\/\/bluzioo.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -108,10 +108,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">loft vcluster 初探</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Loft VCluster 虚拟集群</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/bluzioo" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>maozw</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>kubernetes</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-15">2021-09-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;280 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;<span id="/vcluster/" class="leancloud_visitors" data-flag-title="loft vcluster 初探">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-15">2021-09-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;547 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/vcluster/" class="leancloud_visitors" data-flag-title="Loft VCluster 虚拟集群">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -132,6 +132,7 @@
             <li><a href="#连接虚拟集群">连接虚拟集群</a></li>
             <li><a href="#使用虚拟集群">使用虚拟集群</a></li>
             <li><a href="#验证虚拟集群">验证虚拟集群</a></li>
+            <li><a href="#附helm-安装">附：helm 安装</a></li>
           </ul>
         </li>
       </ul>
@@ -155,19 +156,19 @@
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/vcluster-comparison.png"
-        data-srcset="/images/vcluster-comparison.png, /images/vcluster-comparison.png 1.5x, /images/vcluster-comparison.png 2x"
+        data-src="/download/attachments/31754800/vcluster-comparison.png"
+        data-srcset="/download/attachments/31754800/vcluster-comparison.png, /download/attachments/31754800/vcluster-comparison.png 1.5x, /download/attachments/31754800/vcluster-comparison.png 2x"
         data-sizes="auto"
-        alt="/images/vcluster-comparison.png"
+        alt="/download/attachments/31754800/vcluster-comparison.png"
         title="vcluster-comparison.png" /></p>
 <h2 id="vcluster-架构">vcluster 架构</h2>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/vcluster-architecture.svg"
-        data-srcset="/images/vcluster-architecture.svg, /images/vcluster-architecture.svg 1.5x, /images/vcluster-architecture.svg 2x"
+        data-src="/download/attachments/31754800/images/vcluster-architecture.svg"
+        data-srcset="/download/attachments/31754800/images/vcluster-architecture.svg, /download/attachments/31754800/images/vcluster-architecture.svg 1.5x, /download/attachments/31754800/images/vcluster-architecture.svg 2x"
         data-sizes="auto"
-        alt="/images/vcluster-architecture.svg"
+        alt="/download/attachments/31754800/images/vcluster-architecture.svg"
         title="vcluster-architecture.svg" /></p>
 <p>vcluster本身只包含核心 Kubernetes 组件：API 服务器、控制器管理器和存储后端（如 etcd、sqlite、mysql 等）。为了减少虚拟集群开销，vcluster 构建在k3s 上，这是一个完全有效的、经过认证的、轻量级的 Kubernetes 发行版，它将 Kubernetes 组件编译成单个二进制文件并禁用所有不需要的 Kubernetes 功能，例如 pod 调度程序或某些控制器。</p>
 <p>除了 k3s 之外，还有一个 Kubernetes hypervisor 替代了 Kubernetes 调度程序，并在虚拟集群中模拟完全工作的 Kubernetes 设置。该组件同步一些对虚拟和主机集群之间的集群功能至关重要的核心资源：</p>
@@ -203,26 +204,275 @@ sudo mv vcluster /usr/local/bin<span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="创建虚拟集群">创建虚拟集群</h4>
+<p>官方提供三种方式创建，包括vcluster 客户端、helm、kubectl，为了方便定制配置，以下采用kubectl进行创建。</p>
+<p>dev-cluster.yaml</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceAccount</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Role</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;configmaps&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;secrets&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;services&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;services/proxy&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;pods&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;pods/proxy&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;pods/attach&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;pods/portforward&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;pods/exec&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;pods/log&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;events&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;endpoints&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;persistentvolumeclaims&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;*&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;networking.k8s.io&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;ingresses&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;*&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;namespaces&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;get&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;list&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;watch&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;apps&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;statefulsets&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;get&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;list&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;watch&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">RoleBinding</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nt">subjects</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceAccount</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nt">roleRef</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Role</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">https</span><span class="w">
+</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="m">8443</span><span class="w">
+</span><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster-headless</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">https</span><span class="w">
+</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="m">8443</span><span class="w">
+</span><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span><span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="l">None</span><span class="w">
+</span><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">StatefulSet</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster-headless</span><span class="w">
+</span><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">rancher/k3s:v1.19.5-k3s2</span><span class="w">
+</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">virtual-cluster</span><span class="w">
+</span><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;/bin/k3s&#34;</span><span class="w">
+</span><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;server&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--write-kubeconfig=/k3s-config/kube-config.yaml&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--data-dir=/data&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--disable=traefik,servicelb,metrics-server,local-storage&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--disable-network-policy&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--disable-agent&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--disable-scheduler&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--disable-cloud-controller&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--flannel-backend=none&#34;</span><span class="w">
+</span><span class="w">          </span>- <span class="s2">&#34;--kube-controller-manager-arg=controllers=*,-nodeipam,-nodelifecycle,-persistentvolume-binder,-attachdetach,-persistentvolume-expander,-cloud-node-lifecycle&#34;</span><span class="w">  
+</span><span class="w">          </span>- <span class="s2">&#34;--service-cidr=10.96.0.0/12&#34;</span><span class="w">
+</span><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/data</span><span class="w">
+</span><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">data</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">syncer</span><span class="w">
+</span><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;loftsh/vcluster:0.3.0&#34;</span><span class="w">
+</span><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- --<span class="l">service-name=dev-cluster</span><span class="w">
+</span><span class="w">          </span>- --<span class="l">suffix=dev-cluster</span><span class="w">
+</span><span class="w">          </span>- --<span class="l">owning-statefulset=dev-cluster</span><span class="w">
+</span><span class="w">          </span>- --<span class="l">out-kube-config-secret=dev-cluster</span><span class="w">
+</span><span class="w">          </span>- --<span class="l">tls-san=192.168.199.77</span><span class="w">
+</span><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/data</span><span class="w">
+</span><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">data</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumeClaimTemplates</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">data</span><span class="w">
+</span><span class="w">      </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;ReadWriteOnce&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="w">        </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l">local-path        </span><span class="w">
+</span><span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l">5Gi</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vcluster create vcluster-1 -n host-namespace-1
-
-vcluster create vcluster-1 -n host-namespace-1 --expose 
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl create namespace dev
+kubectl apply -f dev-cluster.yaml -n dev
 </code></pre></td></tr></table>
 </div>
-</div><p>vcluster 另外也可以通过helm，kubectl创建虚拟集群</p>
-<h4 id="连接虚拟集群">连接虚拟集群</h4>
+</div><h4 id="连接虚拟集群">连接虚拟集群</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vcluster connect vcluster-1 -n host-namespace-1
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vcluster connect dev-cluster -n dev
 </code></pre></td></tr></table>
 </div>
 </div><p>在当前目录会生产一份kubeconfig.yaml</p>
@@ -286,19 +536,19 @@ kubectl get pods -n demo-nginx
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">NAME               STATUS   AGE
 default            Active   11d
-host-namespace-1   Active   9m17s
+dev                Active   9m17s
 kube-node-lease    Active   11d
 kube-public        Active   11d
 kube-system        Active   11d
 </code></pre></td></tr></table>
 </div>
-</div><p>查看在host-namespace-1下的deployment，并不存在nginx-deployment，表明vcluster不会同步deployment资源</p>
+</div><p>查看在命名空间dev下的deployment，并不存在nginx-deployment，表明vcluster不会同步deployment资源</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl get deployments -n host-namespace-1
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl get deployments -n dev
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -306,10 +556,10 @@ kube-system        Active   11d
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">No resources found in host-namespace-1 namespace.
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">No resources found in dev namespace.
 </code></pre></td></tr></table>
 </div>
-</div><p>查看在host-namespace-1下的pods，存在一个名为nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-vcluster-1的pod</p>
+</div><p>查看在命名空间dev下的pods，存在一个名为nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-dev-cluster的pod</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -327,9 +577,145 @@ kube-system        Active   11d
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">NAME                                                          READY   STATUS    RESTARTS   AGE
-coredns-66c464876b-p275l-x-kube-system-x-vcluster-1           1/1     Running   <span class="m">0</span>          14m
-nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-vcluster-1   1/1     Running   <span class="m">0</span>          10m
-vcluster-1-0                                                  2/2     Running   <span class="m">0</span>          14m
+coredns-66c464876b-p275l-x-kube-system-x-dev-cluster           1/1     Running   <span class="m">0</span>          14m
+nginx-deployment-84cd76b964-mnvzz-x-demo-nginx-x-dev-cluster   1/1     Running   <span class="m">0</span>          10m
+dev-cluster-0                                                  2/2     Running   <span class="m">0</span>          14m
+</code></pre></td></tr></table>
+</div>
+</div><p>要想在外部访问该虚拟集群，需要暴露该vcluster，可以同过 ingress、nodeport、loadbalance，下面以 nodeport为例。</p>
+<p>nodeport.yaml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster-nodeport</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">dev-cluster</span><span class="w">
+</span><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">https</span><span class="w">
+</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">443</span><span class="w">
+</span><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="m">8443</span><span class="w">
+</span><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l">TCP</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">NodePort</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意在host 集群上下文下进行创建nodeport.yaml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl apply -f nodeport.yaml
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># kubectl get svc -n dev dev-cluster-nodeport</span>
+
+NAME                  TYPE       CLUSTER-IP     EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>         AGE
+dev-cluster-nodeport   NodePort   10.99.72.124   &lt;none&gt;        443:31344/TCP   58m
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vcluster connect dev-cluster -n dev --server<span class="o">=</span>https://192.168.199.77:31344
+
+<span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>./kubeconfig.yaml
+
+kubectl get ns
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="附helm-安装">附：helm 安装</h4>
+<p>设置values</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">vcluster</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">rancher/k3s:v1.19.5-k3s2</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraArgs</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- --<span class="l">service-cidr=10.96.0.0/12</span><span class="w">
+</span><span class="w"></span><span class="nt">syncer</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraArgs</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="s1">&#39;--fake-nodes=false&#39;</span><span class="w">
+</span><span class="w">  </span>- <span class="s1">&#39;--tls-san=192.168.199.77&#39;</span><span class="w">
+</span><span class="w">  </span>- <span class="s1">&#39;--sync-all-nodes&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">storage</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">persistence</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l">5Gi</span><span class="w">
+</span><span class="w">  </span><span class="nt">className</span><span class="p">:</span><span class="w"> </span><span class="l">local-path</span><span class="w">
+</span><span class="w"></span><span class="nt">rbac</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">clusterRole</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> 
+</span></code></pre></td></tr></table>
+</div>
+</div><p>helm 安装命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">helm upgrade --install test-cluster vcluster <span class="se">\
+</span><span class="se"></span>  --values helm-values.yaml <span class="se">\
+</span><span class="se"></span>  --repo https://charts.loft.sh <span class="se">\
+</span><span class="se"></span>  --namespace <span class="nb">test</span> <span class="se">\
+</span><span class="se"></span>  --repository-config<span class="o">=</span><span class="s1">&#39;&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="小结">小结</h2>
@@ -366,8 +752,8 @@ vcluster-1-0                                                  2/2     Running   
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-09-16&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/8120ba3b04af9afd0d68624dd64a9586d7a0070d" target="_blank" title="commit by Bluz Mao(bluz.mao@outlook.com) 8120ba3b04af9afd0d68624dd64a9586d7a0070d: loft vcluster">
-                                    <i class="fas fa-hashtag fa-fw"></i>8120ba3</a></span>
+                <span>Updated on 2021-10-12&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/b3f9e5c5f2a8cfe71c7d156ec2592a9bd42cc274" target="_blank" title="commit by Bluz Mao(bluz.mao@outlook.com) b3f9e5c5f2a8cfe71c7d156ec2592a9bd42cc274: telepresence">
+                                    <i class="fas fa-hashtag fa-fw"></i>b3f9e5c</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -376,7 +762,7 @@ vcluster-1-0                                                  2/2     Running   
                             <a class="link-to-markdown" href="/vcluster/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://bluzioo.github.io/vcluster/" data-title="loft vcluster 初探" data-via="xxxx" data-hashtags="kubernetes,k3s"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://bluzioo.github.io/vcluster/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://bluzioo.github.io/vcluster/" data-title="loft vcluster 初探"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://bluzioo.github.io/vcluster/" data-title="loft vcluster 初探"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://bluzioo.github.io/vcluster/" data-title="loft vcluster 初探"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://bluzioo.github.io/vcluster/" data-title="Loft VCluster 虚拟集群" data-via="xxxx" data-hashtags="kubernetes,k3s"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://bluzioo.github.io/vcluster/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://bluzioo.github.io/vcluster/" data-title="Loft VCluster 虚拟集群"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://bluzioo.github.io/vcluster/" data-title="Loft VCluster 虚拟集群"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://bluzioo.github.io/vcluster/" data-title="Loft VCluster 虚拟集群"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -389,14 +775,14 @@ vcluster-1-0                                                  2/2     Running   
     </div>
 
     <div class="post-nav"><a href="/istio-learning/" class="prev" rel="prev" title="Istio 初探"><i class="fas fa-angle-left fa-fw"></i>Istio 初探</a>
-            <a href="/telepresence/" class="next" rel="next" title="Telepresence">Telepresence<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/telepresence/" class="next" rel="next" title="Telepresence 容器化微服务本地开发">Telepresence 容器化微服务本地开发<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">maozw</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/bluzioo" target="_blank">maozw</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
