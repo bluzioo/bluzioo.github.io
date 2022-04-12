@@ -32,9 +32,9 @@ Harvester 基于 k8s 及多个开源项目构建而成。架构如下图：
 
 Havester 提供了 web 界面操作虚拟机、网络、存储。
 
-* Havester 访问地址：https://{{HARVESTER_VIP}}
-* 内嵌的 Rancher 访问地址：https://{{HARVESTER_VIP}}/dashboard/c/local/explorer 
-* 内嵌的 Longhorn 访问地址：https://{{HARVESTER_VIP}}/dashboard/c/local/longhorn 
+* Havester 访问地址：<https://{{HARVESTER_VIP}}>
+* 内嵌的 Rancher 访问地址：<https://{{HARVESTER_VIP}}/dashboard/c/local/explorer>
+* 内嵌的 Longhorn 访问地址：<https://{{HARVESTER_VIP}}/dashboard/c/local/longhorn>
 
 ### 初始化工作
 
@@ -93,66 +93,103 @@ kubevirt 是 Red Hat 开源的以容器方式运行虚拟机的项目，基于 k
 
 * virt-launcher：每个virt-launcher pod对应着一个VMI，kubelet只负责virt-launcher pod运行状态，不会去关心VMI创建情况。virt-handler会根据CRD参数配置去通知virt-launcher去使用本地的libvirtd实例来启动VMI，随着Pod的生命周期结束，virt-lanuncher也会去通知VMI去执行终止操作；其次在每个virt-launcher pod中还对应着一个libvirtd，virt-launcher通过libvirtd去管理VM的生命周期，这样做到去中心化，不再是以前的虚拟机那套做法，一个libvirtd去管理多个VM。
 
-### 虚拟机创建工作流
+### 虚拟机创建工作流程
 
-虚拟机创建内部流程如下：
+创建虚拟机的内部流程如下：
 
-![kubevirt-workflow](/images/kubevirt-flow.png)
-
-
-
-## Vlan 网络
-
-
+![kubevirt-workflow](/images/kubevirt-workflow.png)
 
 ## Longhorn
 
+Longhorn 是用于 Kubernetes 的轻量级、可靠且功能强大的分布式块存储系统。
 
-Assign Multiple Storage Frontends for Each Volume
-Common front-ends include a Linux kernel device (mapped under /dev/longhorn) and an iSCSI target.
+Longhorn 使用容器和微服务实现分布式块存储。 Longhorn 为每个块设备卷(device volume)创建一个专用的存储控制器， 并跨存储在多个节点上的多个副本同步复制该卷。
 
+### Longhorn 架构
 
-
-2.1、Design
 Longhorn 总体设计分为两层: 数据平面和控制平面；Longhorn Engine 是一个存储控制器，对应数据平面；Longhorn Manager 对应控制平面。
 
-2.1.1、Longhorn Manager
+下图是卷、Longhorn 引擎、副本实例和磁盘之间的读/写数据流
+![longhorn-dataflow](/images/longhorn-dataflow.svg)
+
+* 图中 Longhorn volumes 有三个实例。
+* 每个卷都有一个专用控制器，称为 Longhorn Engine 并作为 Linux 进程运行。
+* 每个 Longhorn 卷有两个副本(replica)，每个副本是一个 Linux 进程。
+* 图中的箭头表示卷(volume)、控制器实例(controller instance)、副本实例(replica instances)和磁盘之间的读/写数据流。
+* 通过为每个卷创建单独的 Longhorn Engine，如果一个控制器出现故障，其他卷的功能不会受到影响。
+
+### Longhorn 组件
+
+#### Longhorn Manager
+
 Longhorn Manager 使用 Operator 模式，作为 Daemonset 运行在每个节点上；Longhorn Manager 负责接收 Longhorn UI 以及 Kubernetes Volume 插件的 API 调用，然后创建和管理 Volume；
 
 Longhorn Manager 在与 kubernetes API 通信并创建 Longhorn Volume CRD(heml 安装直接创建了相关 CRD，查看代码后发现 Manager 里面似乎也会判断并创建一下)，此后 Longhorn Manager watch 相关 CRD 资源和 Kubernetes 原生资源(PV/PVC…)，一但集群内创建了 Longhorn Volume 则 Longhorn Manager 负责创建物理 Volume。
 
-当 Longhorn Manager 创建 Volume 时，Longhorn Manager 首先会在 Volume 所在节点创建 Longhorn Engine 实例(对比实际行为后发现所谓的 “实例” 其实只是运行了一个 Linux 进程，并非创建 Pod)，然后根据副本数量在所需放置副本的节点上创建对应的副本。
+当 Longhorn Manager 创建 Volume 时，Longhorn Manager 首先会在 Volume 所在节点创建 Longhorn Engine 实例(运行了一个 Linux 进程，然后根据副本数量在所需放置副本的节点上创建对应的副本。
 
-2.1.2、Longhorn Engine
-Longhorn Engine 始终与其使用 Volume 的 Pod 在同一节点上，它跨存储在多个节点上的多个副本同步复制卷；同时数据的多路径保证 Longhorn Volume 的 HA，单个副本或者 Engine 出现问题不会影响到所有副本或 Pod 对 Volume 的访问。
+#### Longhorn Engine
 
-下图中展示了 Longhorn 的 HA 架构，每个 Kubernetes Volume 将会对应一个 Longhorn Engine，每个 Engine 管理 Volume 的多个副本，Engine 与 副本实质都会是一个单独的 Linux 进程运行:
+每个 Kubernetes Volume 将会对应一个 Longhorn Engine，每个 Engine 管理 Volume 的多个副本。
 
+Longhorn Engine 始终与其使用 Volume 的 Pod 在同一节点上，Engine 并非是单独的一个 Pod，而是每一个 Volume 对应一个 golang exec 出来的 Linux 进程，存在于每个节点上的 instance-manager-e pod。
 
-注意: 图中的 Engine 并非是单独的一个 Pod，而是每一个 Volume 会对应一个 golang exec 出来的 Linux 进程。
+Engine 跨多节点多副本同步复制卷；同时数据的多路径保证 Longhorn Volume 的 HA，单个副本或者 Engine 出现问题不会影响到所有副本或 Pod 对 Volume 的访问。
 
+#### Longhorn Replica
 
-
-
-
-
-
-副本 Replicas
 每个副本都包含 Longhorn 卷的一系列快照。快照就像镜像(image)的一层，最旧的快照用作基础层，较新的快照在顶部。如果数据覆盖旧快照中的数据，则数据仅包含在新快照中。一系列快照一起显示了数据的当前状态。
+
 Longhorn 副本使用支持精简配置的 Linux sparse files 构建。
 
+### 块设备创建工作流程
 
+![longhorn-workflow](/images/longhorn-workflow.jpg)
 
+## Havester 网络
 
-Longhorn 云原生容器分布式存储 - 故障排除指南
-<https://www.51cto.com/article/686247.html>
+Harvester 使用 Kubernetes 的 CNI 机制来提供网络提供商与虚拟机网络之间的接口。
 
-pv attach 不上的问题：
+Harvester 支持两种类型的网络：
+
+* 管理网络：kubernetes 的默认集群网络，原使用 canal，现改为 cilium
+* VLAN 网络：基于 bridge CNI 提供纯 L2 模式网络，从而将虚拟机桥接到主机网络接口，并且可以使用物理交换机连接内部和外部网络通信。
+
+### 管理网络
+
+Harvester 使用 canal 作为默认管理网络。它是一个内置网络，可以直接从集群中使用。默认情况下，虚拟机的管理网络 IP 只能在集群节点内访问，虚拟机重启后管理网络 IP 会改变。
+
+但是，用户可以利用 Kubernetes service 对象 为你的虚拟机与管理网络创建一个稳定的 IP。
+
+### Vlan 网络
+
+Harvester network-controller 利用 multus 和 bridge CNI 插件来实现它自定义的 L2 桥接 VLAN 网络。这有助于将你的虚拟机连接到主机网络接口，并且可以使用物理交换机从内部和外部网络进行访问。
+
+下图说明了 VLAN 网络在 Harvester 中的工作方式：
+![harvester-vlan-case](/images/harvester-vlan-case.png)
+
+* Harvester network-controller 为每个节点创建一个桥接器(harvester-br0)，并为每个虚拟机创建一对 veth 来实现 VLAN 网络。网桥充当交换机，转发来自或发往虚拟机的网络流量，而一对 veth 则充当虚拟机和交换机之间的连接端口。
+* 同一 VLAN 内的虚拟机能够相互通信，而不同 VLAN 内的虚拟机则不能。
+* 与主机或其他设备（如 DHCP 服务器）连接的外部交换机端口应设置为中继或混合类型，并允许指定的 VLAN。
+* 用户可以使用带有 PVID（默认为 1）的 VLAN 来与任何正常的无标记流量进行通信。
+
+下图展示了 VLAN 网络的一个实例：
+![harvester-virt-network](/images/harvester-virt-network.jpg)
+
+* veth5ef4febd 和 net1 是一对 veth，由 multus-cni 配置
+* k6t-net1 从 net1 虚拟的 bridge 网卡，tap1 一端桥接在 k6t-net1，一端连接 /dev/net/tun，由 libvirt 配置
+
+#### network-controller 工作流程
+
+![harvester-network-controller-workflow](/images/harvester-network-controller-workflow.jpg)
+
+## 故障排查
+
+* pv attach 不上的问题
 重建backing image
 
-配置vlan的虚拟机起不来：
+* 配置vlan的虚拟机起不来
 /etc/cni/net.d/00-multus.conf 文件不存在，重启multus pod 恢复
-
 
 ## 参考
 
@@ -171,5 +208,8 @@ Longhorn 微服务化存储初试
 Longhorn 云原生容器分布式存储 - 故障排除指南
 <https://www.51cto.com/article/686247.html>
 
-kubevirt以容器方式运行虚拟机
-<https://remimin.github.io/2018/09/14/kubevirt/>
+后Kubernetes时代的虚拟机管理技术之kubevirt篇
+<https://www.kubernetes.org.cn/9596.html>
+
+Longhorn 云原生容器分布式存储 - 故障排除指南
+<https://www.51cto.com/article/686247.html>
