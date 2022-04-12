@@ -4,7 +4,19 @@
         <link>https://bluzioo.github.io/posts/</link>
         <description>All Posts | Bluz Space</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>bluz.mao@outlook.com (maozw)</managingEditor>
-            <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>bluz.mao@outlook.com (maozw)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 10 Mar 2022 11:41:35 &#43;0800</lastBuildDate><atom:link href="https://bluzioo.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Harvester 初探</title>
+    <link>https://bluzioo.github.io/harvester/</link>
+    <pubDate>Thu, 10 Mar 2022 11:41:35 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://bluzioo.github.io/harvester/</guid>
+    <description><![CDATA[概述 Harvester 是基于 Kubernetes 构建的开源超融合基础架构 (HCI) 软件。
+何为HCI？参考下 wikipedia 的定义：
+1  Hyperconverged infrastructure (HCI) is a software-defined IT infrastructure that virtualizes all of the elements of conventional &#34;hardware-defined&#34; systems. HCI includes, at a minimum, virtualized computing (a hypervisor), software-defined storage, and virtualized networking (software-defined networking).   简单来说，HCI 融合了虚拟化计算，虚拟化存储，虚拟化网络于一体。
+Harvester 支持在裸机服务器上实施 HCI。Harvester 使用本地、直接连接的存储，而不是复杂的外部 SANs。它提供了一个可集成启动的镜像进行交付，可以通过 ISO 或 PXE 引导直接部署到服务器上。
+Haveseter 架构 Harvester 基于 k8s 及多个开源项目构建而成。架构如下图：
+ Longhorn 是一个轻量级、可靠、易用的 Kubernetes 分布式块存储系统。 KubeVirt 是一个 Kubernetes 的虚拟机管理插件。 Elemental for openSUSE Leap 15.]]></description>
+</item><item>
     <title>Telepresence 容器化微服务本地开发</title>
     <link>https://bluzioo.github.io/telepresence/</link>
     <pubDate>Sat, 18 Sep 2021 00:18:17 &#43;0800</pubDate>

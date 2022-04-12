@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://bluzioo.github.io/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://bluzioo.github.io/</loc><lastmod>2022-04-12T16:20:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://bluzioo.github.io/zh-cn/"
@@ -15,7 +15,9 @@
                     hreflang="en"
                     href="https://bluzioo.github.io/"
                     /></url><url>
-            <loc>https://bluzioo.github.io/categories/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://bluzioo.github.io/harvester/</loc><lastmod>2022-04-12T16:20:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/posts/</loc><lastmod>2022-04-12T16:20:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/categories/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://bluzioo.github.io/zh-cn/categories/"
@@ -30,10 +32,9 @@
                     /></url><url>
             <loc>https://bluzioo.github.io/tags/devops/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://bluzioo.github.io/categories/devops/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/tags/kubernetes/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/categories/kubernetes/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/posts/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/tags/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://bluzioo.github.io/tags/kubernetes/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/categories/kubernetes/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/tags/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://bluzioo.github.io/zh-cn/tags/"
@@ -47,10 +48,10 @@
                     href="https://bluzioo.github.io/tags/"
                     /></url><url>
             <loc>https://bluzioo.github.io/telepresence/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/tags/k3s/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/vcluster/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/tags/istio/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/categories/istio/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://bluzioo.github.io/istio-learning/</loc><lastmod>2021-10-12T11:21:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://bluzioo.github.io/tags/k3s/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/vcluster/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/tags/istio/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/categories/istio/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://bluzioo.github.io/istio-learning/</loc><lastmod>2022-04-12T16:19:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://bluzioo.github.io/metallb/</loc><lastmod>2021-09-21T23:26:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://bluzioo.github.io/tags/loadbalancer/</loc><lastmod>2021-09-21T23:26:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
