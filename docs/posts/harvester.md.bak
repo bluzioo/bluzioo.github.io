@@ -42,8 +42,9 @@ Havester 提供了 web 界面操作虚拟机、网络、存储。
 
 ### 初始化工作
 
-* 新建虚拟机镜像
-* 初始化集群网络
+#### 新建虚拟机镜像
+
+#### 初始化 vlan 网络
 
 ### 创建虚拟机
 
@@ -113,7 +114,7 @@ Longhorn 使用容器和微服务实现分布式块存储。 Longhorn 为每个�
 Longhorn 总体设计分为两层: 数据平面和控制平面；Longhorn Engine 是一个存储控制器，对应数据平面；Longhorn Manager 对应控制平面。
 
 下图是卷、Longhorn 引擎、副本实例和磁盘之间的读/写数据流
-![longhorn-dataflow](/images/longhorn-dataflow.jpg)
+![longhorn-dataflow](/images/longhorn-dataflow.svg)
 
 * 图中 Longhorn volumes 有三个实例。
 * 每个卷都有一个专用控制器，称为 Longhorn Engine 并作为 Linux 进程运行。
@@ -138,8 +139,6 @@ Longhorn Manager 在与 kubernetes API 通信并创建 Longhorn Volume CRD(heml 
 Longhorn Engine 始终与其使用 Volume 的 Pod 在同一节点上，Engine 并非是单独的一个 Pod，而是每一个 Volume 对应一个 golang exec 出来的 Linux 进程，存在于每个节点上的 instance-manager-e pod。
 
 Engine 跨多节点多副本同步复制卷；同时数据的多路径保证 Longhorn Volume 的 HA，单个副本或者 Engine 出现问题不会影响到所有副本或 Pod 对 Volume 的访问。
-
-Longhorn 副本使用支持精简配置的 Linux sparse files 构建。
 
 #### Longhorn Replica
 
@@ -195,21 +194,6 @@ Harvester network-controller 利用 multus 和 bridge CNI 插件来实现它自�
 
 * 配置vlan的虚拟机起不来
 /etc/cni/net.d/00-multus.conf 文件不存在，重启multus pod 恢复
-
-* iscsi 排查
-查看iSCSI target: tgt-admin –show
-
-查看连接的 iscsi target: iscsiadm -m node
-
-* backingimage 的status 含有错误：
-Somehow backing image recorded checksum 6e11cdb02430d5e96cc12a85d297e2443d1e9dfb8eac4d4aef446cfe92f7a325dab9341fb58f4e8dec348dd1ef249c2d6ab81f4c06fac0ad196aa1336a1fb43e
-doesn't match the file checksum cdfb905fd01b3b0592b8028fc53033477bad54a11e71fa1e4285db441db3394b36a8d04264c3cd64254d83ae509e408ec277ae7ef9af52d43dfaf4daf1cacae4
-in disk 6f49b200-6d0b-4b1d-9afd-6726d94b289e
-解决：手动更新status.checksum
-curl --cert /root/client-cert.pem --key /root/client-key.pem -k -XPATCH -H "Accept: application/json" -H "Content-Type: application/merge-patch+json" --data '{"status":{"checksum":"cdfb905fd01b3b0592b8028fc53033477bad54a11e71fa1e4285db441db3394b36a8d04264c3cd64254d83ae509e408ec277ae7ef9af52d43dfaf4daf1cacae4"}}' https://127.0.0.1:6443/apis/longhorn.io/v1beta1/namespaces/longhorn-system/backingimages/default-image-44t7h/status
-
-* 虚拟机重启
-解决：/etc/default/grub 修改 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash mitigations=off"
 
 ## 参考
 
